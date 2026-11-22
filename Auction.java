@@ -1,5 +1,12 @@
 import java.util.ArrayList; // Imports ArrayList to store bid history
 
+/**
+ * Manages an individual auction listing, including item attributes,
+ * current highest bid, active status, and bidding history.
+ *
+ * @author Chandan D K
+ * @version 1.0
+ */
 public class Auction {
 
     // Stores auction ID
@@ -23,7 +30,14 @@ public class Auction {
     // Stores all bids placed on this auction
     private ArrayList<Bid> bids;
 
-    // Constructor initializes auction details
+    /**
+     * Initializes a new Auction item listing with initial state.
+     *
+     * @param id         the unique identifier for the auction
+     * @param itemName   the title or description of the auction item
+     * @param price      the initial reserve starting price
+     * @param sellerName the username of the item's creator
+     */
     public Auction(int id, String itemName, double price, String sellerName) {
         this.id = id;
         this.itemName = itemName;
@@ -34,37 +48,66 @@ public class Auction {
         this.bids = new ArrayList<Bid>(); // Creates empty bid history
     }
 
-    // Returns the auction ID
+    /**
+     * Returns the auction ID.
+     *
+     * @return the unique integer ID
+     */
     public int getId() {
         return id;
     }
 
-    // Returns the item name
+    /**
+     * Returns the item name.
+     *
+     * @return the name of the auction item
+     */
     public String getItemName() {
         return itemName;
     }
 
-    // Returns the current price
+    /**
+     * Returns the current highest price.
+     *
+     * @return the current price
+     */
     public double getPrice() {
         return price;
     }
 
-    // Returns the seller's name
+    /**
+     * Returns the seller's name.
+     *
+     * @return the username of the seller
+     */
     public String getSellerName() {
         return sellerName;
     }
 
-    // Returns the highest bidder
+    /**
+     * Returns the highest bidder's username.
+     *
+     * @return highest bidder username or "No bids"
+     */
     public String getHighestBidder() {
         return highestBidder;
     }
 
-    // Returns whether the auction is active
+    /**
+     * Returns whether the auction is currently active.
+     *
+     * @return true if open for bids; false if closed
+     */
     public boolean isActive() {
         return active;
     }
 
-    // Method to place a new bid
+    /**
+     * Validates and places a new bid on this auction.
+     *
+     * @param bidderName the username of the bidder attempting to bid
+     * @param amount     the monetary bid amount offered
+     */
     public void placeBid(String bidderName, double amount) {
 
         // Checks whether the auction is closed
@@ -90,12 +133,16 @@ public class Auction {
         }
     }
 
-    // Closes the auction by changing its status
+    /**
+     * Closes the auction by changing its status to inactive.
+     */
     public void closeAuction() {
         active = false;
     }
 
-    // Displays complete auction information
+    /**
+     * Displays complete auction information and chronological bid history.
+     */
     public void showDetails() {
         System.out.println("\nAuction ID: " + id);
         System.out.println("Item Name: " + itemName);
